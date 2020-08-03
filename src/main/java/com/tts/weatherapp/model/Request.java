@@ -1,7 +1,13 @@
 package com.tts.weatherapp.model;
 
+import javax.persistence.*;
+
+@Entity
 public class Request {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private String id;
     private String zipCode;
 
     public String getZipCode() {
@@ -9,11 +15,6 @@ public class Request {
     }
 
     public void setZipCode(String zipCode) {
-        this.zipCode = zipCode;
-    }
-
-    public Request(String zipCode) {
-        super();
         this.zipCode = zipCode;
     }
 

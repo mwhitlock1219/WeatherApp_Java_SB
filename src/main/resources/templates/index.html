@@ -46,9 +46,31 @@
 	                + data.weather[0].get('icon') + '.png'}}"></p>
                 </div>
 
+
             </div>
+
+            <div class="col col-md-6 offset-md 3" style="padding:3rem">
+
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Recent Searches</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        <tr th:each="zipCode: ${zip_codes}" th:if="${zipCodeStat.index >= zipCodeStat.size - 10}">
+                            <td th:text="${zipCode.zip}"></td>
+                        </tr>
+
+                    </tbody>
+
+
+                </table>
+            </div>
+
         </div>
-    </div>
 </body>
 
 </html>

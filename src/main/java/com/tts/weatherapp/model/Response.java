@@ -2,6 +2,7 @@ package com.tts.weatherapp.model;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 public class Response {
 
@@ -16,27 +17,6 @@ public class Response {
     private String id;
     private String name;
     private String cod;
-
-    public Response() {
-
-    }
-
-    public Response(Map<String, String> coord, List<Map<String, String>> weather, String base, Map<String, String> main,
-            Map<String, String> wind, Map<String, String> clouds, String dt, Map<String, String> sys, String id,
-            String name, String cod) {
-        super();
-        this.coord = coord;
-        this.weather = weather;
-        this.base = base;
-        this.main = main;
-        this.wind = wind;
-        this.clouds = clouds;
-        this.dt = dt;
-        this.sys = sys;
-        this.id = id;
-        this.name = name;
-        this.cod = cod;
-    }
 
     public Map<String, String> getCoord() {
         return coord;
@@ -102,14 +82,6 @@ public class Response {
         this.sys = sys;
     }
 
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
     public String getName() {
         return name;
     }
@@ -126,4 +98,40 @@ public class Response {
         this.cod = cod;
     }
 
+    public Response(Map<String, String> coord, List<Map<String, String>> weather, String base, Map<String, String> main,
+            Map<String, String> wind, Map<String, String> clouds, String dt, Map<String, String> sys, String name,
+            String cod) {
+        this.coord = coord;
+        this.weather = weather;
+        this.base = base;
+        this.main = main;
+        this.wind = wind;
+        this.clouds = clouds;
+        this.dt = dt;
+        this.sys = sys;
+        this.name = name;
+        this.cod = cod;
+    }
+
+    public Response() {
+
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o)
+            return true;
+        if (o == null || getClass() != o.getClass())
+            return false;
+        Response response = (Response) o;
+        return coord.equals(response.coord) && weather.equals(response.weather) && base.equals(response.base)
+                && main.equals(response.main) && wind.equals(response.wind) && clouds.equals(response.clouds)
+                && dt.equals(response.dt) && sys.equals(response.sys) && id.equals(response.id)
+                && name.equals(response.name) && cod.equals(response.cod);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(coord, weather, base, main, wind, clouds, dt, sys, id, name, cod);
+    }
 }
